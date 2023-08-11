@@ -1,38 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, css } from 'aphrodite';
 
-class BodySection extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		const { title, children } = this.props;
-		return (
-			<React.Fragment>
-				<div className={css(styles.bodySection)}>
-					<h2>{title}</h2>
-					{children}
-				</div>
-			</React.Fragment>
-		);
-	}
-}
-
-const styles = StyleSheet.create({
-	bodySection: {
-		fontFamily: 'Arial, Helvetica, sans-serif',
-		paddingLeft: '50px'
-	}
-});
-
-BodySection.propTypes = {
-	title: PropTypes.string
+const BodySection = ({ title, children }) => {
+  return (
+    <div className='bodySection'>
+      <h2>{title}</h2>
+      {children}
+    </div>
+  );
 };
 
-BodySection.defaultProps = {
-	title: ""
+BodySection.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 export default BodySection;

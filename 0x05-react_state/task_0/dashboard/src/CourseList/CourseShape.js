@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
+import ProtoTypes from 'prop-types';
 
-const CourseShape = PropTypes.shape({
-	id: PropTypes.number.isRequired,
-	name: PropTypes.string.isRequired,
-	credit: PropTypes.number.isRequired
+const CourseShape = ProtoTypes.shape({
+    id: ProtoTypes.number.isRequired,
+    name: ProtoTypes.string.isRequired,
+    credit: ProtoTypes.number.isRequired,
 });
 
 export default CourseShape;

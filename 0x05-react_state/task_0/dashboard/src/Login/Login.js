@@ -1,71 +1,54 @@
-import  React from 'react';
-import { StyleSheet, css } from "aphrodite";
-
-function Login() {
-  return (
-    <React.Fragment>
-      <div className={css(styles.Login)}>
-				<p>Login to access to the full dashboard</p>
-				<div>
-					<div className={css(styles.inputGroup)}> 
-						<label htmlFor="email" >Email:</label>
-						<input id="email" type="email" className={css(styles.LoginInput)} />
-					</div>
-					<div className={css(styles.inputGroup)}>
-						<label htmlFor="password" >Password:</label>
-						<input id="password" type="password" className={css(styles.LoginInput)} />
-					</div>
-					<button className={css(styles.loginButton)}>OK</button>
-				</div>
-      </div>
-    </React.Fragment>
-  );
-}
-
-const responsive = {
-	small: '@media screen and (max-width: 900px)'
-};
+import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 
 const styles = StyleSheet.create({
-	Login: {
-		fontFamily: 'Arial, Helvetica, sans-serif',
-		padding: '50px',
-		[responsive.small]: {
-			padding: 0
-		}
-	},
+  'App-body': {
+    fontSize: '1.4rem',
+    padding: '1.2em',
+    borderBottom: '4px solid red',
+    height: '45%',
+  },
 
-	Loginp: {
-		top: '3rem',
-		left: '2.5rem'
-	},
+  'form-inputs': {
+    display: 'flex',
+    gap: '2em',
+    alignItems: 'center',
+  },
 
-	Logindiv: {
-		marginLeft: '-5px',
-		marginTop: '15px'
-	},
+  mobile: {
+    '@media (max-width: 375px)': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      gap: '0.5em',
+    },
+  },
 
-	LoginInput: {
-		margin: '5px',
-		[responsive.small]: {
-			border: 'none'
-		}
-	},
-
-	inputGroup: {
-		display: 'inline',
-		[responsive.small]: {
-			display: 'flex'
-		}
-	},
-
-	loginButton: {
-		[responsive.small]: {
-			border: '3px solid orange',
-			borderRadius: '5px',
-			
-		}
-	}
+  input: {
+    height: '1.4rem',
+    marginLeft: '10px',
+  },
 });
+
+const Login = () => {
+	return (
+      <React.Fragment>
+        <div className={css(styles['App-body'])}>
+          <p>Login to access the full dashboard</p>
+            <section className={css(styles['form-inputs'], styles.mobile)}>
+              <section className='input'>
+                <label htmlFor='email'>Email:</label>
+                <input type='email' name='email' id='email' className={css(styles.input)} />
+              </section>
+              <section className='input'>
+                <label htmlFor='password'>Password: </label>
+                <input type='password' name='password' id='password' className={css(styles.input)} />
+              </section>
+              <button>OK</button>
+            </section>
+        </div>
+	  </React.Fragment>
+	);
+};
 
 export default Login;

@@ -1,38 +1,23 @@
-import React from 'react';
+import React from "react";
 import { shallow } from 'enzyme';
-import { StyleSheetTestUtils } from 'aphrodite';
-import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
+import BodySection from "./BodySection";
+import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
+import { StyleSheet, StyleSheetTestUtils, css } from "aphrodite";
 
 beforeEach(() => {
-  StyleSheetTestUtils.suppressStyleInjection();
+    StyleSheetTestUtils.suppressStyleInjection();
 });
-
 afterEach(() => {
-  StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
 });
 
-describe('Basic React Tests - <BodySectionWithMarginBottom />', function() {
-	it('Should render without crashing', () => {
-		const wrapper = shallow(<BodySectionWithMarginBottom />);
-		expect(wrapper.exists()).toBeTruthy();
-	});
+describe('BodySectionWithMarginBottom tests', () => {
+    it('should apply margin bottom to child parent', () => {
+        const wrapper = shallow(<BodySectionWithMarginBottom title='test title' />);
 
-	it('Should render correctly a BodySection component and that the props are passed correctly to the child component', () => {
-		const wrapper = shallow(
-			<BodySectionWithMarginBottom title='title' >
-				<p>children</p>
-			</BodySectionWithMarginBottom>
-		);
-		expect(wrapper.find("BodySection")).toHaveLength(1);
-    expect(wrapper.find("BodySection").props().title).toEqual('title');
-	});
-
-	it("Should check that the CSS is correctly applied to BodySectionWithMarginBottom", () => {
-    const wrapper = shallow(
-      <BodySectionWithMarginBottom title="title">
-        <p>children</p>
-      </BodySectionWithMarginBottom>
-    );
-    //expect(wrapper.find(".bodySectionWithMargin").first().exists()).toEqual(true);
-  });
+        expect(wrapper.find(BodySection)).toHaveLength(1);
+        expect(wrapper.find(BodySection).html()).toEqual(
+            '<div class="bodySection"><h2>test title</h2></div>'
+        );
+    });
 });
