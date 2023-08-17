@@ -11,4 +11,3 @@ export default function printBestStudents(grades) {
 
   console.log(bestStudent.toJS());
 }
-
